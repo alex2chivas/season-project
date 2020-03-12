@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import SeasonDisplay from './SeasonDisplay';
 
+import '../src/main.scss';
+
 class App extends Component {
 	state = { lat: null, long: null, errorMessage: '' };
 
