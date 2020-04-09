@@ -1,6 +1,8 @@
 import './main.scss';
 import React from 'react';
 
+import ErrorBoundary from './ErrorBoundary';
+
 const SeasonConfig = {
 	summer: {
 		text: "Let's hit the beach",
@@ -25,11 +27,13 @@ const SeasonDisplay = props => {
 	const { text, iconName } = SeasonConfig[season];
 
 	return (
-		<div className={`season-display ${season}`}>
-			<i className={`icon-left massive ${iconName} icon`} />
-			<h1>{text}</h1>
-			<i className={`icon-right massive ${iconName} icon`} />
-		</div>
+		<ErrorBoundary>
+			<div className={`season-display ${season}`}>
+				<i className={`icon-left massive ${iconName} icon`} />
+				<h1>{text}</h1>
+				<i className={`icon-right massive ${iconName} icon`} />
+			</div>
+		</ErrorBoundary>
 	);
 };
 

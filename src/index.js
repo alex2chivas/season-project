@@ -1,10 +1,11 @@
 import '../src/seasonDisplay.scss';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import SeasonDisplay from './SeasonDisplay';
 
 import Spinner from './Spinner';
 import Uselocation from './userLocation';
+import ErrorBoundary from './ErrorBoundary';
 
 const App = () => {
 	const [ lat, errorMessage ] = Uselocation();
@@ -18,7 +19,11 @@ const App = () => {
 		content = <Spinner message={'Please accept location request'} />;
 	}
 
-	return <div className='border red'>{content}</div>;
+	return (
+		<ErrorBoundary>
+			<div className='border red'>{content}</div>
+		</ErrorBoundary>
+	);
 };
 
 ReactDOM.render(<App />, document.querySelector('#root'));
